@@ -5,6 +5,8 @@ const LoginScreen = () => {
   return (
     <View>
       <Text>LoginScreen</Text>
+      <Text>Email</Text>
+      <Text>Password</Text>
     </View>
   )
 }
