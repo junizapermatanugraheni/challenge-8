@@ -1,3 +1,4 @@
 <resources>
     <string name="app_name">challenge8</string>
+    <string moduleConfig="true" name="CodePushDeploymentKey">QIquonxg63LZo8L2u2cmPhMn8taJ9iFulLJLZ</string>
 </resources>

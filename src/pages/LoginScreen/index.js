@@ -1,15 +1,18 @@
-import { StyleSheet, Text, View, TouchableOpacity} from 'react-native'
+import { StyleSheet, Text, View, TouchableOpacity, SafeAreaView } from 'react-native'
 import React from 'react'
+// import Input from '../../component/form'
 
 const LoginScreen = () => {
   return (
-    <View>
-      <Text>LoginScreen</Text>
-      <TouchableOpacity>Button</TouchableOpacity>
-    </View>
+    <SafeAreaView>
+      <Text style={styles.fontStyles}>Welcome to Formik Form</Text>
+      {/* <Input /> */}
+    </SafeAreaView>
   )
 }
 
 export default LoginScreen
 
-const styles = StyleSheet.create({})
+const styles = StyleSheet.create({
+
+})
