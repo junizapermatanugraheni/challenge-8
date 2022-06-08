@@ -2,13 +2,14 @@ import { StyleSheet, Text, View } from 'react-native'
 import React from 'react'
 import Route from './route'
 import CodePush from 'react-native-code-push'
+import { NavigationContainer } from '@react-navigation/native'
 
 const codePushOptions = { checkFrequency: CodePush.CheckFrequency.ON_APP_START}
 const App = () => {
   return (
-    <View>
+    <NavigationContainer>
       <Route/>
-    </View>
+    </NavigationContainer>
   )
 }
 

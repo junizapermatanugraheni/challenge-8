@@ -4,7 +4,7 @@ import React from 'react'
 const Input = ({onChangeText, value, placeholder, error}) => {
     const win = Dimensions.width
     return (
-        <View style={{marginVertical: 10, height: 50, width: win}}>
+        <View style={{marginVertical: 10, height: 85, width: win, marginHorizontal: 10}}>
             <TextInput
                 style={styles.InputContainer}
                 onChangeText={onChangeText}
@@ -21,9 +21,12 @@ export default Input
 const styles = StyleSheet.create({
     InputContainer:{
         flex: 1,
-        borderColor: 'grey',
-        borderRadius: 6,
-        borderWidth: 1,
-        justifyContent: 'center'
+        borderColor: 'black',
+        borderRadius: 20,
+        borderWidth: 2,
+        justifyContent: 'center',
+        backgroundColor: 'white',
+        opacity: .2,
+        color: 'black'
     }
 })
