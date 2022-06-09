@@ -1,50 +1,52 @@
 import { StyleSheet, Text, View, TextInput, Dimensions } from 'react-native'
 import React from 'react'
 
-const Input = ({ onChangeText, value, placeholder, error, selectTextOnFocus }) => {
+const Input = ({ onChangeText, value, placeholder, errors, selectTextOnFocus }) => {
     const win = Dimensions.width
     if (placeholder === 'Enter Email') {
         return (
-            <View style={{ marginVertical: 10, height: 85, width: win, marginHorizontal: 10 }}>
+            <View style={{ marginVertical: 5, height: 60, width: win, marginHorizontal: 10 }}>
                 <TextInput
                     style={styles.InputContainer}
                     onChangeText={onChangeText}
                     value={value}
                     placeholder={placeholder}
+                    placeholderTextColor="black"
                     selectTextOnFocus={selectTextOnFocus}
-                    
                 />
-                <Text style={{ color: 'red', marginTop: 5 }}>{error}</Text>
+                {/* <Text style={{ color: 'red' }}>{errors}</Text> */}
             </View>
         )
     }
     if (placeholder === 'Enter Password') {
         return (
-        <View style={{ marginVertical: 10, height: 85, width: win, marginHorizontal: 10 }}>
+        <View style={{ marginVertical: 5, height: 60, width: win, marginHorizontal: 10 }}>
             <TextInput
                 style={styles.InputContainer}
                 onChangeText={onChangeText}
                 value={value}
                 placeholder={placeholder}
+                placeholderTextColor="black"
                 selectTextOnFocus={selectTextOnFocus}
-            
+                secureTextEntry
             />
-            <Text style={{ color: 'red', marginTop: 5 }}>{error}</Text>
+            {/* <Text style={{ color: 'red'}}>{errors}</Text> */}
         </View>
         )
     }
     if (placeholder === 'Enter FullName') {
         return (
-        <View style={{ marginVertical: 10, height: 85, width: win, marginHorizontal: 10 }}>
+        <View style={{ marginVertical: 5, height: 60, width: win, marginHorizontal: 10 }}>
             <TextInput
                 style={styles.InputContainer}
                 onChangeText={onChangeText}
                 value={value}
                 placeholder={placeholder}
+                placeholderTextColor="black"
                 selectTextOnFocus={selectTextOnFocus}
             
             />
-            <Text style={{ color: 'red', marginTop: 5 }}>{error}</Text>
+            {/* <Text style={{ color: 'red'}}>{errors}</Text> */}
         </View>
         )
     }
