@@ -18,30 +18,20 @@ function LoginScreen({ navigation }) {
       .min(8, ({ min }) => `Password must be at least ${min} characters`)
       .required('Password is required'),
   })
-  const userInfo = {
-    email: '',
-    password: ''
-  }
-  const handleSubmit = () => {
-    auth()
-      .signInWithEmailAndPassword(email, password)
-      .then(() => {
-        analytics().logEvent("Login", {
-          with: "Login Firebase Auth"
-        })
-        analytics().setUserProperty("Login type", "Login Firebase Auth")
-        navigation.navigate('DashboardScreen')
-      })
-      .catch(error => {
-        if (error.code === 'auth/email-already-in-use') {
-          console.log('That email address is already in use!');
-        }
+  const handleSubmit = ({email, password}) => {
+    auth().signInWithEmailAndPassword(email, password).then((response) => {
+      navigation.navigate('DashboardScreen')
+    })
+    .catch(error => {
+      if (error.code === 'auth/email-already-in-use') {
+        console.log('That email address is already in use!');
+      }
 
-        if (error.code === 'auth/invalid-email') {
-          console.log('That email address is invalid!');
-        }
-        console.error(error);
-      });
+      if (error.code === 'auth/invalid-email') {
+        console.log('That email address is invalid!');
+      }
+      console.error(error);
+    });
   }
   return (
     <View style={{ justifyContent: 'center', backgroundColor: '#bfc8ff', flex: 1 }}>
@@ -51,8 +41,8 @@ function LoginScreen({ navigation }) {
       <Text style={styles.fontText}>Email</Text>
       <Formik
         validateOnMount={true}
-        initialValues={userInfo}
-        onSubmit={handleSubmit}
+        initialValues={{ email: '', password: ''}}
+        onSubmit={(values) => handleSubmit(values)}
         validationSchema={validationSchema}
       >
         {({ handleChange, handleBlur, handleSubmit, values, errors, touched, isValid }) => {
@@ -61,7 +51,7 @@ function LoginScreen({ navigation }) {
             <Input
               placeholder='Enter Email'
               onChangeText={handleChange('email')}
-              value={email}
+              value={values.email}
               onBlur={handleBlur('email')}
             />
             {errors.email  && 
@@ -72,8 +62,9 @@ function LoginScreen({ navigation }) {
             <Input
               onChangeText={handleChange('password')}
               onBlur={handleBlur('password')}
-              value={password}
+              value={values.password}
               placeholder='Enter Password'
+              secureTextEntry
             />
             {errors.password &&
               <Text style={{ fontSize: 15, color: 'red', marginHorizontal: 10, alignSelf: 'center', marginVertical: 5}}>{errors.password}</Text>

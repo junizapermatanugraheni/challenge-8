@@ -1,14 +1,33 @@
-import { StyleSheet, Text, View } from 'react-native'
-import React from 'react'
+import React, { useEffect } from "react"
+import { Text, View, Button, FlatList } from "react-native"
+import { useDispatch, useSelector } from "react-redux"
+import styles from "../../assets/styles";
+import { fetchPokemons } from "../../store/action"
+import PokemonCard from "../../component/reusable/card"
 
-const DashboardScreen = () => {
-  return (
-    <View>
-      <Text>DashboardScreen</Text>
-    </View>
-  )
+export default function DashboardScreen({ navigation }) {
+    const dispatch = useDispatch()
+    const pokemons = useSelector(state => state.pokemons)
+    const loading = useSelector(state => state.loading)
+    const next = useSelector(state => state.next)
+
+    
+
+    return (
+        <View style={styles.container}>
+            <Text style={styles.text__title}>Pokedex</Text>
+            <FlatList
+                data={pokemons}
+                numColumns={2}
+                showsVerticalScrollIndicator={false}
+                keyExtractor={(pokemon) => String(pokemon.id)}
+                renderItem={({ item }) => <PokemonCard pokemon={item} />}
+                contentContainerStyle={styles.flatListContentContainer}
+            />
+
+            <View style={{ padding: 5, marginTop: 10 }}>
+                <Button title="Show More" color={"gray"} onPress={() => dispatch(fetchPokemons(next))} />
+            </View>
+        </View>
+    )
 }
-
-export default DashboardScreen
-
-const styles = StyleSheet.create({})
