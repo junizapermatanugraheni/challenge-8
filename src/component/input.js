@@ -50,6 +50,22 @@ const Input = ({ onChangeText, value, placeholder, errors, selectTextOnFocus }) 
         </View>
         )
     }
+    if (placeholder === 'Enter bio') {
+        return (
+        <View style={{ marginVertical: 5, height: 60, width: win, marginHorizontal: 10 }}>
+            <TextInput
+                style={styles.InputContainer}
+                onChangeText={onChangeText}
+                value={value}
+                placeholder={placeholder}
+                placeholderTextColor="black"
+                selectTextOnFocus={selectTextOnFocus}
+            
+            />
+            {/* <Text style={{ color: 'red'}}>{errors}</Text> */}
+        </View>
+        )
+    }
 }
 
 export default Input

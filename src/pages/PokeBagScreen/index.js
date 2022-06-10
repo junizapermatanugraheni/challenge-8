@@ -1,14 +1,11 @@
-import { StyleSheet, Text, View } from 'react-native'
-import React from 'react'
+import React from "react"
+import { Text, View, Button } from "react-native"
 
-const PokeBagScreen = () => {
-  return (
-    <View>
-      <Text>PokeBagScreen</Text>
-    </View>
-  )
+export default function PokeBagScreen({ navigation }) {
+    return (
+        <View>
+            <Text>Pokebag page</Text>
+            <Button title='To Home' color="lightcoral" onPress={() => navigation.navigate('DashboardScreen')} />
+        </View>
+    )
 }
-
-export default PokeBagScreen
-
-const styles = StyleSheet.create({})
